@@ -1,0 +1,13 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+canvas {
+  width: 100wv;
+  height: 100vh;
+}
