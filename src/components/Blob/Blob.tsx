@@ -8,7 +8,7 @@ import { extend, useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import { mergeVertices } from "three-stdlib";
 import { DistortionMaterial } from "../../materials/distortionMaterial";
-import { Center } from "@react-three/drei";
+import { Center, Sparkles } from "@react-three/drei";
 
 extend({ DistortionMaterial });
 
@@ -31,11 +31,10 @@ const Blob = () => {
   });
 
   return (
-    <Center top>
-      <mesh castShadow receiveShadow geometry={geometry}>
-        <distortionMaterial roughness={0.1} clearcoat={0.6} ref={material} />
-      </mesh>
-    </Center>
+    <mesh castShadow receiveShadow geometry={geometry}>
+      <distortionMaterial roughness={0.1} clearcoat={0.6} ref={material} />
+      {/* <Sparkles count={5000} scale={4} size={6} speed={4} /> */}
+    </mesh>
   );
 };
 
