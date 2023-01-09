@@ -30,6 +30,7 @@ export class DistortionMaterial extends MeshPhysicalMaterial {
       n *= n;
       return n;
     }
+    
     vec3 getPos(vec3 p){
       // return p * (uRadius + noise(p * 0.875) * 0.25);
       return p * (4. + noise(p * 0.875) * 0.25);
