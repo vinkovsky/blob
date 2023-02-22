@@ -23,18 +23,18 @@ import Blob from "../Blob";
 const App: FC = () => {
   return (
     <Canvas shadows camera={{ position: [0, 0, 15], fov: 50 }}>
-      {/* <directionalLight />  */}
+      {/* <directionalLight /> */}
       <Blob />
       <Environment resolution={32}>
         <group rotation={[-Math.PI / 4, -0.3, 0]}>
           <Lightformer
-            intensity={20}
+            intensity={2}
             rotation-x={Math.PI / 2}
             position={[0, 5, -9]}
             scale={[10, 10, 1]}
           />
           <Lightformer
-            intensity={2}
+            intensity={3}
             rotation-y={Math.PI / 2}
             position={[-5, 1, -1]}
             scale={[10, 2, 1]}
