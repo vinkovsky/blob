@@ -5,14 +5,13 @@ import {
   IcosahedronGeometry,
 } from "three";
 import { extend, useFrame } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import { mergeVertices } from "three-stdlib";
 import { DistortionMaterial } from "../../materials/distortionMaterial";
-import { Center, Sparkles } from "@react-three/drei";
 
 extend({ DistortionMaterial });
 
-const icosahedronGeometry = new IcosahedronGeometry(1, 150);
+const icosahedronGeometry = new IcosahedronGeometry(1, 200);
 icosahedronGeometry.deleteAttribute("normal");
 icosahedronGeometry.deleteAttribute("uv");
 
@@ -27,14 +26,13 @@ const Blob = () => {
   });
 
   return (
-    <mesh castShadow receiveShadow geometry={bufferIcosahedronGeometry}>
-      <distortionMaterial
-        // vertexColors
-        roughness={0.1}
-        clearcoat={0.2}
-        ref={material}
-      />
-      {/* <Sparkles count={5000} scale={4} size={6} speed={4} /> */}
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={bufferIcosahedronGeometry}
+      position={[0, 0, 0]}
+    >
+      <distortionMaterial roughness={0.8} clearcoat={0.8} ref={material} />
     </mesh>
   );
 };

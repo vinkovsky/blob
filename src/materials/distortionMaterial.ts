@@ -21,8 +21,7 @@ export class DistortionMaterial extends MeshPhysicalMaterial {
     shader.uniforms.uRadius = this._uRadius;
 
     shader.vertexShader = `
-    uniform float uTime;
-    uniform float uRadius;
+    uniform float uTime; 
     varying vec3 rPos;
     ${snoise}
     float noise(vec3 p){
@@ -34,7 +33,6 @@ export class DistortionMaterial extends MeshPhysicalMaterial {
     }
     
     vec3 getPos(vec3 p){
-      // return p * (uRadius + noise(p * 0.875) * 0.25);
       return p * (4. + noise(p * 0.875) * 0.25);
     }
     ${shader.vertexShader}

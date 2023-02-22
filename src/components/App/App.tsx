@@ -1,32 +1,23 @@
-import {
-  AccumulativeShadows,
-  Center,
-  Environment,
-  Lightformer,
-  OrbitControls,
-  RandomizedLight,
-} from "@react-three/drei";
-import {
-  Vignette,
-  Noise,
-  Bloom,
-  DepthOfField,
-  EffectComposer,
-} from "@react-three/postprocessing";
+import { Environment, Lightformer } from "@react-three/drei";
+import { Noise, EffectComposer } from "@react-three/postprocessing";
 import { Canvas } from "@react-three/fiber";
-import { FC, Suspense } from "react";
+import { FC } from "react";
 import Blob from "../Blob";
 
-// 'normalMap-repeat': [40, 40],
-// normalScale: [0.05, 0.05]
-
-const App: FC = () => {
-  return (
+const App: FC = () => (
+  <div
+    style={{
+      width: 500,
+      height: 780,
+      position: "absolute",
+      top: 20,
+      right: -100,
+    }}
+  >
     <Canvas shadows camera={{ position: [0, 0, 15], fov: 50 }}>
-      {/* <directionalLight /> */}
       <Blob />
       <Environment resolution={32}>
-        <group rotation={[-Math.PI / 4, -0.3, 0]}>
+        <group rotation={[Math.PI / 4, 0.5, 0]}>
           <Lightformer
             intensity={2}
             rotation-x={Math.PI / 2}
@@ -60,13 +51,11 @@ const App: FC = () => {
           />
         </group>
       </Environment>
-      <OrbitControls />
       <EffectComposer>
-        <Bloom luminanceThreshold={0.9} luminanceSmoothing={0.4} height={300} />
-        <Noise opacity={1} />
+        <Noise />
       </EffectComposer>
     </Canvas>
-  );
-};
+  </div>
+);
 
 export default App;
