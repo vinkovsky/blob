@@ -51,15 +51,14 @@ export class DistortionMaterial extends MeshPhysicalMaterial {
         vec3 ptTangentSample = getPos(normalize(p0 + theta * normalize(vecTangent)));
         vec3 ptBitangentSample = getPos(normalize(p0 + theta * normalize(vecBitangent)));
 
-        objectNormal = normalize(cross(ptBitangentSample - p0, ptTangentSample - p0));
-        // rPos = normalize(cross(p0, vec3(0.5,0.8,0.2)));
-        rPos = p0;
+        objectNormal = normalize(cross(ptBitangentSample - p0, ptTangentSample - p0)); 
       `
       )
       .replace(
         `#include <begin_vertex>`,
         `#include <begin_vertex>
         transformed = p0;
+        rPos = transformed;
       `
       );
 
@@ -71,25 +70,12 @@ export class DistortionMaterial extends MeshPhysicalMaterial {
       `
         float coord = length(rPos);
         float line = abs(fract(coord - 0.5) - 0.5);
-        float grid = 1.0 - min(line, 1.0); 
+        float grid = 1.0 - min(line, 1.0);  
 
-        // vec4 diffuseColor = vec4( mix(gl_FragColor.rgb, vec3(1), grid), opacity ); 
-        // vec4 diffuseColor = vec4( mix(vec3(1, 0, 0), vec3(0, 0, 1), grid), opacity );
-        // vec4 diffuseColor = vec4( mix(vec3(1, 0, 0), vec3(0, 0, 1), smoothstep(20., 10., grid )), opacity ); 
-
-        vec3 col = mix(vec3(1, 0, 0), vec3(0, 0, 1), smoothstep(1., 5., coord));
+        vec3 col = mix(vec3(1, 0, 0), vec3(0, 0, 1), smoothstep(0.8, 5., coord));
         vec4 diffuseColor = vec4( col, opacity );
       `
     );
-    //   .replace(
-    //     `#include <dithering_fragment>`,
-    //     `#include <dithering_fragment>
-
-    //   // gl_FragColor.rgb = mix(mix(gl_FragColor.rgb, vec3(0,1,0), grid), col, grid);
-    //   gl_FragColor.rgb = mix(gl_FragColor.rgb, col * 2., grid);
-
-    // `
-    //   );
   }
 
   get uTime() {
