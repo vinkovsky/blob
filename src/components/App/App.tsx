@@ -52,7 +52,8 @@ const App: FC = () => (
             scale={[10, 2, 1]}
           />
           <Lightformer
-            intensity={2}
+            intensity={3}
+            color="#51A1FF"
             rotation-y={Math.PI / 2}
             position={[-5, -1, -1]}
             scale={[10, 2, 1]}
