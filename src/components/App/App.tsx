@@ -10,16 +10,37 @@ const App: FC = () => (
       width: 600,
       height: 780,
       position: "absolute",
+      background: "#3F58FD",
       top: 20,
       right: -100,
     }}
   >
+    <div
+      style={{
+        width: 600,
+        height: 500,
+        position: "absolute",
+        background: "black",
+        top: 0,
+      }}
+    />
+    <div
+      style={{
+        width: 600,
+        height: 300,
+        position: "absolute",
+        background: "#D5045B",
+        top: 0,
+      }}
+    />
+
     <Canvas shadows camera={{ position: [0, 0, 15], fov: 50 }}>
       <Blob />
       <Environment resolution={32}>
         <group rotation={[Math.PI / 4, 0.5, 0]}>
           <Lightformer
-            intensity={2}
+            intensity={6}
+            color="red"
             rotation-x={Math.PI / 2}
             position={[0, 5, -9]}
             scale={[10, 10, 1]}
