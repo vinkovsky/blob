@@ -9,7 +9,6 @@ import snoise from "glsl-noise/simplex/4d.glsl";
 
 export class DistortionMaterial extends MeshPhysicalMaterial {
   private _uTime = { value: 1.0 };
-  private _uRadius = { value: 1.0 };
 
   constructor(parameters: MeshPhysicalMaterialParameters) {
     super();
@@ -18,7 +17,6 @@ export class DistortionMaterial extends MeshPhysicalMaterial {
 
   onBeforeCompile(shader: Shader) {
     shader.uniforms.uTime = this._uTime;
-    shader.uniforms.uRadius = this._uRadius;
 
     shader.vertexShader = `
     uniform float uTime; 
@@ -84,13 +82,5 @@ export class DistortionMaterial extends MeshPhysicalMaterial {
 
   set uTime(t) {
     this._uTime.value = t;
-  }
-
-  get uRadius() {
-    return this._uRadius.value;
-  }
-
-  set uRadius(r) {
-    this._uRadius.value = r;
   }
 }
