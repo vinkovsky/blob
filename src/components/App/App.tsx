@@ -52,7 +52,7 @@ const App: FC = () => (
         </group>
       </Environment>
       <EffectComposer>
-        <Noise />
+        <Noise opacity={0.5} />
       </EffectComposer>
     </Canvas>
   </div>
