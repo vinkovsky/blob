@@ -1,5 +1,4 @@
 import { Environment, Lightformer } from "@react-three/drei";
-import { Noise, EffectComposer } from "@react-three/postprocessing";
 import { Canvas } from "@react-three/fiber";
 import { FC } from "react";
 import Blob from "../Blob";
@@ -18,7 +17,7 @@ const App: FC = () => (
     <div
       style={{
         width: 600,
-        height: 500,
+        height: 600,
         position: "absolute",
         background: "black",
         top: 0,
@@ -73,9 +72,6 @@ const App: FC = () => (
           />
         </group>
       </Environment>
-      {/* <EffectComposer>
-        <Noise opacity={0.5} />
-      </EffectComposer> */}
     </Canvas>
   </div>
 );
