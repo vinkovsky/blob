@@ -7,7 +7,7 @@ import Blob from "../Blob";
 const App: FC = () => (
   <div
     style={{
-      width: 500,
+      width: 600,
       height: 780,
       position: "absolute",
       top: 20,
